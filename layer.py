@@ -12,6 +12,6 @@ class Layer_Dense:
     def forward(self, inputs):
         # apply linear transformation
         z = np.dot(inputs, self.weights) + self.biases
-        # apply activation function if exist else return raw output
-        return self.activation(z) if self.activation else z
-    
+        # apply activation function if exist else return raw output (linear activation function)
+        self.output = self.activation(z) if self.activation else z
+        return self.output
