@@ -18,5 +18,7 @@ def categoricalCrossEntropy(y_pred, y_target):
     return loss
 
 
-def regressionMSE(y_pred, y_target):
-    return np.mean((y_pred - y_target) ** 2)
+def regressionMSE(y_pred, y_target, deriv=False):
+    if deriv:
+        return 2 * (y_pred - y_target) / y_pred.shape[0]
+    return (y_pred - y_target) ** 2
