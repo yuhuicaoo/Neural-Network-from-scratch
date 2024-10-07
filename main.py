@@ -2,7 +2,7 @@ import numpy as np
 from layer import Layer_Dense
 from neuralNetwork import NeuralNetwork
 from activations import *
-from losses import *
+from losses import regressionMSE, categoricalCrossEntropy
 
 def main():
     inputs = np.random.randn(1,2)
@@ -17,14 +17,16 @@ def main():
 if __name__ == "__main__":
     # main()
 
-    X = np.array([[1, 2, 3], [4, 5, 6]])
+    X = np.array([[1, 2, 3]])
     y_true = np.array([1,1])  # True class indices
 
     nn = NeuralNetwork()
-    nn.add_layer(Layer_Dense(3,5, activation=ReLU))
-    nn.add_layer(Layer_Dense(5,2, activation=soft_max))
+    nn.add_layer(Layer_Dense(3,5))
+    nn.add_layer(Layer_Dense(5,2))
     output = nn.forward(X)
-    print(f"Ouput: {output}")
-    loss = nn.calc_loss(output, y_true, loss_function=categoricalCrossEntropy)
+    print(f"Ouput: \n {output}")
+    loss = nn.calc_loss(output, y_true, loss_function=regressionMSE)
+    output_grad =(2 * (output - y_true)) / (output.shape[0])
+    print(output_grad)
     print(f"Loss: {loss}")
 

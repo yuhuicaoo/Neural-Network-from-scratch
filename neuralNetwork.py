@@ -16,6 +16,5 @@ class NeuralNetwork:
             raise ValueError("Loss function not provided")
         
         loss = loss_function(output, target)
-        batch_loss = np.mean(loss)
-        return batch_loss
+        return loss
 
