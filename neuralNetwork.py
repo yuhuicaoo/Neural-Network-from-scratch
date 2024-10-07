@@ -11,10 +11,8 @@ class NeuralNetwork:
             inputs = layer.forward(inputs)
         return inputs
 
-    def calc_loss(self, output, target, loss_function=None):
-        if loss_function is None:
-            raise ValueError("Loss function not provided")
-        
-        loss = loss_function(output, target)
-        return loss
+    def calc_loss(self):
+        pass
 
+    def backward(self):
+        pass
